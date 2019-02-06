@@ -20,21 +20,27 @@
 </template>
 
 <script>
-    import Paper from '../ui/Paper'
-    export default {
-        components: {
-            Paper
-        },
-        methods: {
-            async registerUserData(event) {
-                const userData = {
-                    Email: event.target.email.value,
-                    Password: event.target.password.value
-                }
-                console.log(userData)
+import Paper from '../ui/Paper'
+import {registerUser} from '../../services/auth.service'
+import router from '../../router/router'
+
+export default {
+    components: {
+        Paper
+    },
+    methods: {
+        async registerUserData(event) {
+            const userData = {
+                Email: event.target.email.value,
+                Password: event.target.password.value
+            }
+            const res = await registerUser(userData.Email, userData.Password)
+            if (res) {
+                router.push({name: 'Login'})
             }
         }
     }
+}
 </script>
 
 <style scoped>

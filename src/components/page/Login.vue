@@ -23,6 +23,8 @@
 
 <script>
 import Paper from '../ui/Paper'
+import {loginUser} from '../../services/auth.service'
+import router from '../../router/router'
 
 export default {
     components: {
@@ -34,7 +36,10 @@ export default {
                 Email: event.target.email.value,
                 Password: event.target.password.value
             }
-            console.log(userData)
+            const res = await loginUser(userData.Email, userData.Password)
+            if (res) {
+                router.push({name: 'Main'})
+            }
         }
     }
 }

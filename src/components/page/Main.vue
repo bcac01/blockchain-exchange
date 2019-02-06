@@ -1,12 +1,29 @@
 <template>
     <div class="main">
-        main page
+        {{user}}
     </div>
 </template>
 
 <script>
-export default {
+import firebase from '../../services/fire'
+import {registerUser} from '../../services/auth.service'
+import router from '../../router/router'
 
+
+export default {
+    data() {
+        return {
+            user: null
+        }
+    },
+    created() {
+        const currentUser = firebase.auth().currentUser
+        if (currentUser) {
+            this.user = currentUser
+        } else {
+            router.push({name: 'Login'})
+        }
+    }
 }
 </script>
 
