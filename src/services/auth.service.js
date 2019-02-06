@@ -8,8 +8,11 @@ export async function registerUser(email, password) {
     console.log('REGISTER', res)
     await fire.database().ref('users/' + res.user.uid).set({
         email,
-        password
+        password,
+        balanceETH: 5,
+        balanceUSD: 0
     })
+    alert('Successful login!')
     return true
 }
 
