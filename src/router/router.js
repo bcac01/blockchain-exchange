@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from '../components/page/Login'
 import Register from '../components/page/Register'
+import Main from '../components/page/Main'
 
 
 Vue.use(Router)
@@ -24,6 +25,18 @@ const router = new Router({
             meta: {
                 title: 'Register'
             },
+        },
+        {
+            path: '/main',
+            name: 'Main',
+            component: Main,
+            meta: {
+                title: 'Main'
+            },
+        },
+        {
+            path: '/',
+            redirect: '/login'
         }
     ]
 })
