@@ -1,7 +1,7 @@
 <template>
     <div class="main">
         <Header @logout="logoutUserAndGoBack()"/>
-        {{user}}
+        <UserInfo :user="user" v-if="user" class="main-user-info"/>
     </div>
 </template>
 
@@ -11,11 +11,13 @@ import {registerUser, logoutUser} from '../../services/auth.service'
 import {getUser} from '../../services/user.service'
 import router from '../../router/router'
 import Header from '../ui/Header'
+import UserInfo from '../ui/UserInfo'
 
 
 export default {
     components: {
-        Header
+        Header,
+        UserInfo
     },
     data() {
         return {
@@ -45,6 +47,11 @@ export default {
     display: flex;
     flex-direction: column;
     height: 100%;
+    background-color: lightgray;
+}
+
+.main-user-info {
+    width: fit-content;
 }
 
 </style>
