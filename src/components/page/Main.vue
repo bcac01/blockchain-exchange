@@ -1,7 +1,10 @@
 <template>
     <div class="main">
         <Header @logout="logoutUserAndGoBack()"/>
-        <UserInfo :user="user" v-if="user" class="main-user-info"/>
+        <div class="main-top-layer">
+            <Exchanger :user="user" v-if="user" @submitAmount="convertAmount($event)" class="main-exchanger"/>
+            <UserInfo :user="user" v-if="user" class="main-user-info"/>
+        </div>
     </div>
 </template>
 
@@ -12,12 +15,13 @@ import {getUser} from '../../services/user.service'
 import router from '../../router/router'
 import Header from '../ui/Header'
 import UserInfo from '../ui/UserInfo'
-
+import Exchanger from '../ui/Exchanger'
 
 export default {
     components: {
         Header,
-        UserInfo
+        UserInfo,
+        Exchanger
     },
     data() {
         return {
@@ -28,7 +32,10 @@ export default {
         logoutUserAndGoBack() {
             logoutUser()
             router.push({name: 'Login'})
-
+        },
+        convertAmount(event) {
+            const conversionInfo = event.conversionInfo
+            console.log(conversionInfo) 
         }
     },
     async created() {
@@ -50,8 +57,17 @@ export default {
     background-color: lightgray;
 }
 
+.main-top-layer {
+    display: flex;
+    flex-direction: row;
+}
+
 .main-user-info {
     width: fit-content;
+}
+
+.main-exchanger {
+    flex-grow: 1;
 }
 
 </style>
