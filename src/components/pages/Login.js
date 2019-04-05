@@ -22,7 +22,7 @@ class Login extends Component {
             <button onClick={() => this.generatePoolAddr()}>Generate Pool</button>
             <span className="register-span">
                 Don't have an account yet?
-                <a href="/register"> Sign up free</a>
+                <button onClick={() => this.props.OnGoToRegister()}> Sign up free</button>
             </span>
 
         </Paper>
@@ -44,9 +44,7 @@ class Login extends Component {
         const res = await loginUser(userData.Email, userData.Password)
         
         if (res) {
-            //router.push({name: 'Main'})
-            alert('jump to main')
-            console.log(res)
+            this.props.OnLoginSuccess(res)
         } else {
             console.log('greska', res)
         }
