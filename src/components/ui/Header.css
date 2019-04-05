@@ -1,0 +1,29 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 3em;
+    background-color: lightgray;
+}
+
+.header > * {
+    margin: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.header > h1 {
+    font-size: 2em;
+}
+
+.header > button {
+    background-color: whitesmoke;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    font-size: 1em;
+    padding: 3px;
+    width: fit-content;
+}

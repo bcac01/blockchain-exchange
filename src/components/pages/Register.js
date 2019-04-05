@@ -21,7 +21,7 @@ class Register extends Component {
     
                 <span className="login-span">
                     Already have an account?
-                    <a href="/login"> Log in </a>
+                    <button onClick={() => this.props.OnBackToLogin()}> Log in </button>
                 </span>
             </Paper>
             </div>
@@ -38,8 +38,7 @@ class Register extends Component {
         const res = await registerUser(userData.Email, userData.Password)
         
         if (res) {
-            //router.push({name: 'Login'})
-            alert('jump to login')
+            this.props.OnBackToLogin()
         }
     }
 }

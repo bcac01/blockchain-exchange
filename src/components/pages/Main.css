@@ -1,0 +1,21 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: lightgray;
+}
+
+.main-top-layer {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 1em;
+}
+
+.main-user-info {
+    width: fit-content;
+}
+
+.main-exchanger {
+    flex-grow: 1;
+}
