@@ -3,6 +3,7 @@ import Paper from '../ui/Paper';
 import {generatePool} from '../../services/pool.service'
 import {loginUser} from '../../services/auth.service'
 import './Login.css'
+import { initBankFeePool } from '../../services/exchange.service';
 
 
 class Login extends Component {
@@ -24,14 +25,13 @@ class Login extends Component {
                 Don't have an account yet?
                 <button onClick={() => this.props.OnGoToRegister()}> Sign up free</button>
             </span>
-
         </Paper>
         </div>
         )
     }
 
-    generatePoolAddr() {
-        generatePool().then(() => console.log('pool generated'))
+    async generatePoolAddr() {
+        await initBankFeePool()
     }
 
     async loginUserData(event) {

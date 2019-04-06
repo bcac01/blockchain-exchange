@@ -3,8 +3,10 @@ import './Main.css'
 import Header from '../ui/Header';
 import Exchanger from '../ui/Exchanger';
 import UserInfo from '../ui/UserInfo';
+import { initializeBank } from '../../services/exchange.service';
 
 class Main extends Component {
+
     render() {
         return (
             <div className="main">
